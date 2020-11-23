@@ -62,21 +62,37 @@ namespace API_Romanis_NetCore.Controllers
             }
 
             return listProductos;
-
         }
 
         // PUT ACTUALIZA PRODUCTO
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("update/{id}")]
+        public int UpdateProducto([FromRoute] int id, [FromBody] Producto value)
         {
-
+            try
+            {
+                var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+                using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
+                {
+                    producto.UpdateProducto(id, value.Nombre, value.Descripcion, value.Precio, value.Imagen, (int)value.IdCategoria);
+                }
+                return 200;
+            }
+            catch
+            {
+                return 500;
+            }
         }
 
         // DELETE ELIMINA PRODUCTO
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("delete/{id}")]
+        public void DeleteProducto([FromRoute] int id)
         {
+            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
 
+            using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
+            {
+                 producto.DeleteProducto(id);
+            }
         }
     }
 }

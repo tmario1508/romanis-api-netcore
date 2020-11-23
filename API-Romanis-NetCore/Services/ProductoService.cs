@@ -103,7 +103,6 @@ namespace API_Romanis_NetCore.Services
             return list;
         }
 
-
         public List<Producto> GetProductos()
         {
             List<Producto> list = new List<Producto>();
@@ -151,6 +150,23 @@ namespace API_Romanis_NetCore.Services
             return list;
         }
 
+        public int DeleteProducto(int IdProducto)
+        {
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            try
+            {
+                //PARAMETROS
+                _Parametros.Add(new SqlParameter("@id", IdProducto));
+                sql.PrepararProcedimiento("dbo.[EliminarProducto]", _Parametros);
+                sql.EjecutarProcedimiento();
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public int InsertarProducto(string Nombre, string Descripcion,float Precio, string Imagen, int Categoria)
         {
             int IdProducto = 0;
@@ -184,6 +200,34 @@ namespace API_Romanis_NetCore.Services
                 throw new Exception(ex.Message, ex);
             }
         }
+
+        public int UpdateProducto(int IdProducto, string Nombre, string Descripcion, float Precio, string Imagen, int Categoria)
+        {
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            try
+            {
+                //PARAMETROS
+                _Parametros.Add(new SqlParameter("@id", IdProducto));
+                _Parametros.Add(new SqlParameter("@Nombre", Nombre));
+                _Parametros.Add(new SqlParameter("@Descripcion", Descripcion));
+                _Parametros.Add(new SqlParameter("@Precio", Precio));
+                _Parametros.Add(new SqlParameter("@Imagen", Imagen));
+                _Parametros.Add(new SqlParameter("@Categoria", Categoria));
+
+                sql.PrepararProcedimiento("dbo.[UpdateProducto]", _Parametros);
+                sql.EjecutarProcedimiento();
+                return 1;
+            }
+            catch (SqlException sqlEx)
+            {
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
     }
-    
+
 }

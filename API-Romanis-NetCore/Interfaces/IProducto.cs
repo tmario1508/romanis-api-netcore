@@ -10,6 +10,8 @@ namespace API_Romanis_NetCore.Interfaces
     {
         List<Producto> GetProductos();
         List<Producto> GetProductosByCategory(int Categoria);
+        int DeleteProducto(int IdProducto);
         int InsertarProducto(string Nombre, string Descripcion,float Precio, string Imagen, int Categoria);
+        int UpdateProducto(int IdProducto, string Nombre, string Descripcion, float Precio, string Imagen, int Categoria);
     }
 }

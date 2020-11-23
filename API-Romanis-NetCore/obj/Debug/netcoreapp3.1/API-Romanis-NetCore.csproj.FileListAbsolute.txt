@@ -58,3 +58,4 @@ C:\Users\jigna\Pictures\Maestria WEB y Movil\PROYECTO INTEGRADOR 1\API\API-Roman
 C:\Users\jigna\Pictures\Maestria WEB y Movil\PROYECTO INTEGRADOR 1\API\API-Romanis-NetCore\API-Romanis-NetCore\obj\Debug\netcoreapp3.1\API-Romanis-NetCore.dll
 C:\Users\jigna\Pictures\Maestria WEB y Movil\PROYECTO INTEGRADOR 1\API\API-Romanis-NetCore\API-Romanis-NetCore\obj\Debug\netcoreapp3.1\API-Romanis-NetCore.pdb
 C:\Users\jigna\Pictures\Maestria WEB y Movil\PROYECTO INTEGRADOR 1\API\API-Romanis-NetCore\API-Romanis-NetCore\obj\Debug\netcoreapp3.1\API-Romanis-NetCore.genruntimeconfig.cache
+C:\Users\jigna\Pictures\Maestria WEB y Movil\PROYECTO INTEGRADOR 1\API\API-Romanis-NetCore\API-Romanis-NetCore\obj\Debug\netcoreapp3.1\API-Romanis-NetCore.csprojAssemblyReference.cache
