@@ -55,14 +55,64 @@ namespace API_Romanis_NetCore.Services
             Dispose(true);
         }
 
-        public List<Producto> GetProductosByCategory(int Categoria)
+        
+
+        public List<Producto> GetProductoById(int id)
         {
             List<Producto> list = new List<Producto>();
             Producto user = new Producto();
             List<SqlParameter> _Parametros = new List<SqlParameter>();
             try
             {
-                _Parametros.Add(new SqlParameter("@id", Categoria));
+                _Parametros.Add(new SqlParameter("@id", id));
+                sql.PrepararProcedimiento("dbo.[GetProductoId]", _Parametros);
+                DataTableReader dtr = sql.EjecutarTableReader(CommandType.StoredProcedure);
+                if (dtr.HasRows)
+                {
+                    while (dtr.Read())
+                    {
+                        var Json = dtr["Producto"].ToString();
+                        if (Json != string.Empty)
+                        {
+                            JArray arr = JArray.Parse(Json);
+                            foreach (JObject jsonOperaciones in arr.Children<JObject>())
+                            {
+                                list.Add(new Producto()
+                                {
+                                    IdProducto = Convert.ToInt32(jsonOperaciones["IdProducto"].ToString()),
+                                    Nombre = jsonOperaciones["Nombre"].ToString(),
+                                    Descripcion = jsonOperaciones["Descripcion"].ToString(),
+                                    Precio = (float)Convert.ToDouble(jsonOperaciones["Precio"].ToString()),
+                                    Imagen = jsonOperaciones["Imagen"].ToString(),
+                                    IdCategoria = (CategoryType)Convert.ToInt32(jsonOperaciones["Categoria"].ToString()),
+                                });
+
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception(sqlEx.Message, sqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+
+            return list;
+        }
+
+        public List<Producto> GetProductosByCategory(int categoria)
+        {
+            List<Producto> list = new List<Producto>();
+            Producto user = new Producto();
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            try
+            {
+                _Parametros.Add(new SqlParameter("@id", categoria));
                 sql.PrepararProcedimiento("dbo.[GetProductoCategory]", _Parametros);
                 DataTableReader dtr = sql.EjecutarTableReader(CommandType.StoredProcedure);
                 if (dtr.HasRows)

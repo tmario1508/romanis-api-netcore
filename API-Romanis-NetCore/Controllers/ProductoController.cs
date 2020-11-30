@@ -49,16 +49,32 @@ namespace API_Romanis_NetCore.Controllers
 
         }
 
-        // POST CONSULTA POR CATEGORIA
-        [HttpPost("category/{id}")]
-        public IEnumerable<Producto> GetProductosByCategoria([FromRoute] int id)
+        // POST CONSULTA DATOS DEL PRODUCTO POR ID
+        [HttpPost("search/{id}")]
+        public IEnumerable<Producto> GetProductoById([FromRoute] int id)
         {
             List<Producto> listProductos = new List<Producto>();
             var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
 
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {
-                listProductos = producto.GetProductosByCategory(id);
+                listProductos = producto.GetProductoById(id);
+            }
+
+            return listProductos;
+        }
+
+
+        // POST CONSULTA POR CATEGORIA
+        [HttpPost("category/{categoria}")]
+        public IEnumerable<Producto> GetProductosByCategoria([FromRoute] int categoria)
+        {
+            List<Producto> listProductos = new List<Producto>();
+            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+
+            using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
+            {
+                listProductos = producto.GetProductosByCategory(categoria);
             }
 
             return listProductos;
