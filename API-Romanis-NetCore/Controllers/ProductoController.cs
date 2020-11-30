@@ -49,8 +49,8 @@ namespace API_Romanis_NetCore.Controllers
 
         }
 
-        // POST CONSULTA DATOS DEL PRODUCTO POR ID
-        [HttpPost("search/{id}")]
+        // GET CONSULTA DATOS DEL PRODUCTO POR ID
+        [HttpGet("search/{id}")]
         public IEnumerable<Producto> GetProductoById([FromRoute] int id)
         {
             List<Producto> listProductos = new List<Producto>();
@@ -65,8 +65,8 @@ namespace API_Romanis_NetCore.Controllers
         }
 
 
-        // POST CONSULTA POR CATEGORIA
-        [HttpPost("category/{categoria}")]
+        // GET CONSULTA POR CATEGORIA
+        [HttpGet("category/{categoria}")]
         public IEnumerable<Producto> GetProductosByCategoria([FromRoute] int categoria)
         {
             List<Producto> listProductos = new List<Producto>();
