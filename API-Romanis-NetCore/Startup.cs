@@ -32,8 +32,24 @@ namespace API_Romanis_NetCore
                     builder.AllowAnyOrigin()
                        .AllowAnyHeader()
                        .AllowAnyMethod();
+
+                    options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    );
+
+                    options.AddPolicy("signalr",
+                        builder => builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+
+                        .AllowCredentials()
+                        .SetIsOriginAllowed(hostName => true));
                 });
             });
+
             services.AddControllers();
         }
 

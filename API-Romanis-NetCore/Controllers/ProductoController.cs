@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 
 namespace API_Romanis_NetCore.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductoController : ControllerBase
     {
-        readonly IConfiguration _configuration;
+        string serverName = "ServidorAzure";
+        private readonly IConfiguration _configuration;
         public ProductoController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -25,7 +26,7 @@ namespace API_Romanis_NetCore.Controllers
         public int InsertProducto([FromBody] Producto value)
         {
             int id = 0;
-            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+            var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {
                 id = producto.InsertarProducto(value.Nombre, value.Descripcion, value.Precio, value.Imagen, (int)value.IdCategoria);
@@ -38,7 +39,7 @@ namespace API_Romanis_NetCore.Controllers
         public IEnumerable<Producto> GetProductos()
         {
             List<Producto> listProductos = new List<Producto>();
-            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+            var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
 
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {
@@ -54,7 +55,7 @@ namespace API_Romanis_NetCore.Controllers
         public IEnumerable<Producto> GetProductoById([FromRoute] int id)
         {
             List<Producto> listProductos = new List<Producto>();
-            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+            var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
 
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {
@@ -70,7 +71,7 @@ namespace API_Romanis_NetCore.Controllers
         public IEnumerable<Producto> GetProductosByCategoria([FromRoute] int categoria)
         {
             List<Producto> listProductos = new List<Producto>();
-            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+            var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
 
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {
@@ -86,7 +87,7 @@ namespace API_Romanis_NetCore.Controllers
         {
             try
             {
-                var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+                var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
                 using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
                 {
                     producto.UpdateProducto(id, value.Nombre, value.Descripcion, value.Precio, value.Imagen, (int)value.IdCategoria);
@@ -103,7 +104,7 @@ namespace API_Romanis_NetCore.Controllers
         [HttpDelete("delete/{id}")]
         public void DeleteProducto([FromRoute] int id)
         {
-            var ConnectionStringLocal = _configuration.GetValue<string>("ServidorLocal");
+            var ConnectionStringLocal = _configuration.GetValue<string>(serverName);
 
             using (IProducto producto = Factorizador.CrearConexionServicio(ConnectionType.MSSQL, ConnectionStringLocal))
             {

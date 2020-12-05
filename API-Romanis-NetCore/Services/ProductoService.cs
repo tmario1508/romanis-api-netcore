@@ -55,8 +55,6 @@ namespace API_Romanis_NetCore.Services
             Dispose(true);
         }
 
-        
-
         public List<Producto> GetProductoById(int id)
         {
             List<Producto> list = new List<Producto>();
