@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jigna\\Pictures\\Maestria WEB y Movil\\PROYECTO INTEGRADOR 1\\API\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj": {}
+    "C:\\Maestria\\2do Cuatrimestre\\03MTW206\\proyecto_romanis\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jigna\\Pictures\\Maestria WEB y Movil\\PROYECTO INTEGRADOR 1\\API\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj": {
+    "C:\\Maestria\\2do Cuatrimestre\\03MTW206\\proyecto_romanis\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jigna\\Pictures\\Maestria WEB y Movil\\PROYECTO INTEGRADOR 1\\API\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj",
+        "projectUniqueName": "C:\\Maestria\\2do Cuatrimestre\\03MTW206\\proyecto_romanis\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj",
         "projectName": "API-Romanis-NetCore",
-        "projectPath": "C:\\Users\\jigna\\Pictures\\Maestria WEB y Movil\\PROYECTO INTEGRADOR 1\\API\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj",
-        "packagesPath": "C:\\Users\\jigna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jigna\\Pictures\\Maestria WEB y Movil\\PROYECTO INTEGRADOR 1\\API\\API-Romanis-NetCore\\API-Romanis-NetCore\\obj\\",
+        "projectPath": "C:\\Maestria\\2do Cuatrimestre\\03MTW206\\proyecto_romanis\\API-Romanis-NetCore\\API-Romanis-NetCore\\API-Romanis-NetCore.csproj",
+        "packagesPath": "C:\\Users\\Mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Maestria\\2do Cuatrimestre\\03MTW206\\proyecto_romanis\\API-Romanis-NetCore\\API-Romanis-NetCore\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jigna\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

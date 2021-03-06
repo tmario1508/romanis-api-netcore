@@ -14,7 +14,7 @@ namespace API_Romanis_NetCore.Controllers
     [Route("api/[controller]")]
     public class ProductoController : ControllerBase
     {
-        string serverName = "ServidorAzure";
+        string serverName = "ServidorLocal";
         private readonly IConfiguration _configuration;
         public ProductoController(IConfiguration configuration)
         {
