@@ -4,8 +4,8 @@ EXPOSE 44308
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["API-Romanis-NetCore.csproj", "./"]
-RUN dotnet restore "API-Romanis-NetCore.csproj"
+COPY ["/API-Romanis-NetCore/API-Romanis-NetCore.csproj", "./"]
+RUN dotnet restore "/API-Romanis-NetCore/API-Romanis-NetCore.csproj"
 COPY . .
 RUN dotnet build "API-Romanis-NetCore.csproj" -c Release -o /app/build
 
